@@ -7,16 +7,12 @@ class Bill:
         self.due_date = due_date
 
     def __repr__(self) -> str:
-        descreption: str = f"""
-Bill name: {self.name}
-Amount due: {self.amount}
-Date due: {self.due_date}
-"""
+        descreption: str = self.name
         return descreption
 
-
-# Test bill
-due: datetime.date = datetime.date(2024,6,30)
-phone_bill = Bill('phone', 95.50, due)
-print(phone_bill)
+if __name__ == '__main__':
+    # Test bill
+    due: datetime.date = datetime.date(2024,6,30)
+    phone_bill = Bill('phone', 95.50, due)
+    print(phone_bill)
 
