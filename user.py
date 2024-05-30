@@ -9,7 +9,7 @@ class User:
         self.expenses:list[Bill] = []
 
     def __repr__(self) -> str:
-        description: str = f"User name: {self.name} \nID:{self.user_id} \nUser Bills: {self.expenses}"
+        description: str = f"User: {self.name} Id:{self.user_id}"
         return description
     
     def add_new_bill(self, name, amount:float, due_date) -> None:
@@ -17,6 +17,13 @@ class User:
         if type(name == Bill):
             if name not in self.expenses:
                 self.expenses.append(name)
+
+    def list_all_bills(self) -> list[str]:
+        bill_names:list[str] = []
+        if len(self.expenses) > 0:
+            for bill in self.expenses:
+                bill_names.append(bill.name)
+        return bill_names
 
     def remove_bill(self, name: str) -> None:
         for bill in self.expenses:
@@ -27,20 +34,29 @@ class User:
 
 # Test the use and bill modules
 if __name__ == '__main__':
-    #test user 1
+    # Test user 1
     murphy =  User('Murphy', 123, 100)
     murphy.add_new_bill('phone', 90.50, datetime.date(2024,6,30))
     murphy.add_new_bill('cable', 60, datetime.date(2024,6,25))
+    murphy.add_new_bill('rent', 1650.23,datetime.date(2024,6,1))
     print(murphy)
     
-    print()
+    # Print murphy's bills
+    bills = murphy.list_all_bills()
+    print(bills)
+    
 
-    #test user 2
+    # Test user 2
     mary =  User('Mary', 321, 100)
     mary.add_new_bill('hydro', 90.50, datetime.date(2024,6,30))
     mary.add_new_bill('cable', 60, datetime.date(2024,6,25))
-
-    #remove a bill
+    mary.add_new_bill('rent', 1425.62, datetime.date(2024,6,1))
+    print('\n', mary)
+    
+    # Remove may's cable bill
     mary.remove_bill('cable')
-    print(mary)
+    
+    # Print mary's bills
+    bills = mary.list_all_bills()
+    print(bills)
     
