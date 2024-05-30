@@ -2,10 +2,9 @@ import datetime
 from bill import Bill
 
 class User:
-    def __init__(self, name:str, user_id:int, acc_balance:float) -> None:
+    def __init__(self, name:str, user_id:int) -> None:
         self.name = name
         self.user_id = user_id
-        self.acc_balance = acc_balance
         self.expenses:list[Bill] = []
 
     def __repr__(self) -> str:
@@ -35,7 +34,7 @@ class User:
 # Test the use and bill modules
 if __name__ == '__main__':
     # Test user 1
-    murphy =  User('Murphy', 123, 100)
+    murphy =  User('Murphy', 123)
     murphy.add_new_bill('phone', 90.50, datetime.date(2024,6,30))
     murphy.add_new_bill('cable', 60, datetime.date(2024,6,25))
     murphy.add_new_bill('rent', 1650.23,datetime.date(2024,6,1))
@@ -47,7 +46,7 @@ if __name__ == '__main__':
     
 
     # Test user 2
-    mary =  User('Mary', 321, 100)
+    mary =  User('Mary', 321)
     mary.add_new_bill('hydro', 90.50, datetime.date(2024,6,30))
     mary.add_new_bill('cable', 60, datetime.date(2024,6,25))
     mary.add_new_bill('rent', 1425.62, datetime.date(2024,6,1))
