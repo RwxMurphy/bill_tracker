@@ -25,17 +25,21 @@ def get_user_sign_in():
 def select_option() -> int:
     user_name, user_id = get_user_sign_in() 
     user_option_selected: int = 0
+
+    option_1: str = '\033[1m 1. View all you current bills.\033[0m'
+    option_2: str = '\033[1m 2. Add a new bill.\033[0m'
+    option_3: str = '\033[1m 3. Remove a bill.\033[0m'
     
     menu_options = f"""
---- Welcome {user_name} - {user_id} ---
-please enter the number that corresponds with the action you would like to take.
-1. View all you current bills.
-2. Add a new bill.
-3. Remove a bill
+*** Welcome {user_name}-{user_id} ***
+Please enter the number that corresponds with the action you would like to take.\n
+{option_1}
+{option_2}
+{option_3}
 """
     os.system('clear')
     print(menu_options)
-    user_option_selected = input('What would you like to do: ')
+    user_option_selected = int( input('What would you like to do: ') )
     return user_option_selected
 
 if __name__ == '__main__':
