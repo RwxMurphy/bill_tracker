@@ -1,17 +1,17 @@
 import os
 import shutil
 import time
+import random
 from bills_logo import bills_logo
 
 # Transition screen
-def loader(load_str:list[str] = ['*', '*', '*', '*', '*', '*', '*', '*','*','*'], time_delay=0.3) -> None:
+def loader(time_delay=0.1) -> None:
     term_width: int = shutil.get_terminal_size().columns
     os.system('clear')
-    progress: str = ''
-    for char in load_str:
-        print('\n\n\n\n\n\n\n\n\n\n')
-        progress += char
-        print(progress.center(term_width))
+    progress: list[str] = ['.']
+    for i in range(0, random.randint(10,40)):
+        progress.insert(1, '*')
+        print(''.join(progress))
         time.sleep(time_delay)
         os.system('clear')
 
