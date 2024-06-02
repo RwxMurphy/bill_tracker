@@ -57,8 +57,8 @@ def select_option(user_name, user_id) -> int:
     option_4: str = '\033[1m 0. Exit.\033[0m'
     
     menu_options = f"""
---- Welcome {user_name}-{user_id} ---\n
-Please enter the number that corresponds with the action you would like to take.\n
+--- {user_name}-{user_id} ---\n
+Select an option from the menu.\n
 {option_1}
 {option_2}
 {option_3}
@@ -67,7 +67,7 @@ Please enter the number that corresponds with the action you would like to take.
 """
     #os.system('clear')
     print(menu_options)
-    user_option_selected = int( input('What would you like to do: ') )
+    user_option_selected = int( input('Enter a number from the menu: ') )
     return user_option_selected
 
 
