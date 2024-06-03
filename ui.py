@@ -127,8 +127,8 @@ def remove_bill_view(user: User):
     for bill in bills_list:
         print(f'- {bill}')
     
-    name: str = input('Enter the name of the bill you want to remove:\n')
-    print(f'Are you sure you want to remove {name}?\n')
+    name: str = input('\nEnter the name of the bill you want to remove:\n')
+    print(f'\nAre you sure you want to remove {name}?')
     warning: str = input(f"Enter 'n' (no) or 'y' (yes)\n")
     if warning == 'y':
         user.remove_bill(name)
@@ -137,7 +137,7 @@ def remove_bill_view(user: User):
         print(f'{name} was NOT removed and is still being tracked\n')
 
     
-    input('Press ENTER to continue...\n')
+    input('\nPress ENTER to continue...\n')
     
 
 
