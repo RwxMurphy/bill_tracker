@@ -119,8 +119,26 @@ Do not use leading zeros \nExample 06 should be entered as 6.
 
 
 
-def remove_bill_view():
-    pass
+def remove_bill_view(user: User):
+    os.system('clear')
+    print(f'--- Remove Bill ---\n_________________________')
+    print(f'Here are all your current bills \n_________________________')
+    bills_list = user.list_all_bills()
+    for bill in bills_list:
+        print(f'- {bill}')
+    
+    name: str = input('Enter the name of the bill you want to remove:\n')
+    print(f'Are you sure you want to remove {name}?\n')
+    warning: str = input(f"Enter 'n' (no) or 'y' (yes)\n")
+    if warning == 'y':
+        user.remove_bill(name)
+        print(f'{name} bill was REMOVED!\n')
+    else:
+        print(f'{name} was NOT removed and is still being tracked\n')
+
+    
+    input('Press ENTER to continue...\n')
+    
 
 
 

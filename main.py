@@ -13,7 +13,7 @@ while user_choice != 0:
     elif user_choice == 2:
         ui.add_bill_view(new_user)
     elif user_choice == 3:
-        ui.remove_bill_view()
+        ui.remove_bill_view(new_user)
     user_choice: int = ui.select_option(user_name, user_id) # prints menu and gets user choice
 
 ui.sign_out(new_user)
