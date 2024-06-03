@@ -51,6 +51,7 @@ def select_option(user_name, user_id) -> int:
     # call load screen before displaying the menu
     loader()
 
+    # set menu options
     option_1: str = '\033[1m 1. View current bills.\033[0m'
     option_2: str = '\033[1m 2. Add a new bill.\033[0m'
     option_3: str = '\033[1m 3. Remove a bill.\033[0m'
@@ -59,9 +60,8 @@ def select_option(user_name, user_id) -> int:
     menu_options = f"""
 --- {user_name}-{user_id} ---
 _____________________________
-
 Select an option from the menu.
-
+_____________________________
 {option_1}
 {option_2}
 {option_3}
@@ -121,9 +121,21 @@ Do not use leading zeros \nExample 06 should be entered as 6.
 
 
 
-
 def remove_bill_view():
     pass
+
+
+
+
+
+def sign_out(user: User) -> None:
+    os.system('clear')
+    print('Thank You For Using Bills....')
+    print(f'\n{user.name}-{user.user_id} signed-out!')
+    print('_____________________________\n')
+
+
+
 
     
 
