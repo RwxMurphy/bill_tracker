@@ -4,17 +4,18 @@ import time
 import random
 from bills_logo import bills_logo
 from user import User
+from loader import loader
 
 # Transition screen
-def loader(time_delay=0.1) -> None:
-    term_width: int = shutil.get_terminal_size().columns
-    os.system('clear')
-    progress: list[str] = ['*']
-    for i in range(0, random.randint(10, 20)):
-        progress.insert(1, '*')
-        print(''.join(progress))
-        time.sleep(time_delay)
-        os.system('clear')
+# def loader(time_delay=0.1) -> None:
+#     term_width: int = shutil.get_terminal_size().columns
+#     os.system('clear')
+#     progress: list[str] = ['*']
+#     for i in range(0, random.randint(10, 20)):
+#         progress.insert(1, '*')
+#         print(''.join(progress))
+#         time.sleep(time_delay)
+#         os.system('clear')
 
 
 
