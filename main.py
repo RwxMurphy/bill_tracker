@@ -13,7 +13,9 @@ while user_choice != 0:
     elif user_choice == 3:
         ui.remove_bill_view()
     user_choice: int = ui.select_option(user_name, user_id) # prints menu and gets user choice
-
+print(f'{user_name}-{user_id} signed-out!')
+print('Thank You For Using Bills....')
+print('_____________________________\n')
 
 if __name__ == '__main__':
     pass

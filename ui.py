@@ -9,8 +9,8 @@ from user import User
 def loader(time_delay=0.1) -> None:
     term_width: int = shutil.get_terminal_size().columns
     os.system('clear')
-    progress: list[str] = ['.']
-    for i in range(0, random.randint(10,40)):
+    progress: list[str] = ['*']
+    for i in range(0, random.randint(10, 20)):
         progress.insert(1, '*')
         print(''.join(progress))
         time.sleep(time_delay)
@@ -57,22 +57,30 @@ def select_option(user_name, user_id) -> int:
     option_4: str = '\033[1m 0. Exit.\033[0m'
     
     menu_options = f"""
---- {user_name}-{user_id} ---\n
-Select an option from the menu.\n
+--- {user_name}-{user_id} ---
+_____________________________
+
+Select an option from the menu.
+
 {option_1}
 {option_2}
 {option_3}
 {option_4}
-
 """
     #os.system('clear')
     print(menu_options)
-    user_option_selected = int( input('Enter a number from the menu: ') )
+    user_option_selected = int( input('\nEnter a number from the menu: ') )
+    print()
     return user_option_selected
 
 
+
+
+
+
 def current_bills_view(user: User) -> None:
-    print(f'--- {user.name}-{user.user_id} current bills ---')
+    os.system('clear')
+    print(f'--- {user.name}-{user.user_id} current bills ---\n_________________________')
     list_of_bills: list[str] = user.list_all_bills()
     for bill in list_of_bills:
         print(f'- {bill}')
@@ -86,24 +94,33 @@ def current_bills_view(user: User) -> None:
 
 
 def add_bill_view(user:User):
-    date_instruct = '''
+    os.system('clear')
+    date_format:str = '\033[1m yyyy,m,d\033[0m'
+    date_instruct:str = f'''
 Enter the date in the following format:
-yyyy,m,d 
+{date_format} 
 Example June 25th 2024 would be: 
-2024,6,25'
-Do not use leading zeros 06 should be entered as 6.
+2024,6,25
+Do not use leading zeros \nExample 06 should be entered as 6.
 '''
     print(f'--- Creating New Bill ---\n_________________________')
     name: str = input('\nWhat is the name of the bill?\n')
-    amount: float = float( input(f'What is the amount due for {name} bill?\n') )
+    amount: float = float( input(f'\nWhat is the amount due for your {name} bill?\n $') )
+    
+    os.system('clear')
     print(date_instruct)
-    due_date = input('\nPlease enter the due date in the format indicated\n')
+    due_date = input(f'\nPlease enter the due date for your {name} bill in the format {date_format}.\n')
 
     # call the add_new_bill method on the user
     user.add_new_bill(name, amount, due_date)
 
-    print(f'{name} bill was added to your expenses')
-    input('Press ENTER to continue...')
+    os.system('clear')
+    print(f"\nYour '{name}' bill was added to your expenses.")
+    input('\nPress ENTER to continue...')
+
+
+
+
 
 def remove_bill_view():
     pass
