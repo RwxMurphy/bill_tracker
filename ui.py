@@ -47,11 +47,8 @@ def sign_in_user() -> tuple:
 
 # Menu selections
 def select_option(user_name, user_id) -> int:
+    os.system('clear')
     user_option_selected: int = 0
-
-    # call load screen before displaying the menu
-    loader()
-
     # set menu options
     option_1: str = '\033[1m 1. View current bills.\033[0m'
     option_2: str = '\033[1m 2. Add a new bill.\033[0m'
