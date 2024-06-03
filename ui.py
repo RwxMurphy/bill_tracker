@@ -85,8 +85,25 @@ def current_bills_view(user: User) -> None:
 
 
 
-def add_bill_view():
-    pass
+def add_bill_view(user:User):
+    date_instruct = '''
+Enter the date in the following format:
+yyyy,m,d 
+Example June 25th 2024 would be: 
+2024,6,25'
+Do not use leading zeros 06 should be entered as 6.
+'''
+    print(f'--- Creating New Bill ---\n_________________________')
+    name: str = input('\nWhat is the name of the bill?\n')
+    amount: float = float( input(f'What is the amount due for {name} bill?\n') )
+    print(date_instruct)
+    due_date = input('\nPlease enter the due date in the format indicated\n')
+
+    # call the add_new_bill method on the user
+    user.add_new_bill(name, amount, due_date)
+
+    print(f'{name} bill was added to your expenses')
+    input('Press ENTER to continue...')
 
 def remove_bill_view():
     pass
