@@ -6,20 +6,8 @@ from bills_logo import bills_logo
 from user import User
 from loader import loader
 
-# Transition screen
-# def loader(time_delay=0.1) -> None:
-#     term_width: int = shutil.get_terminal_size().columns
-#     os.system('clear')
-#     progress: list[str] = ['*']
-#     for i in range(0, random.randint(10, 20)):
-#         progress.insert(1, '*')
-#         print(''.join(progress))
-#         time.sleep(time_delay)
-#         os.system('clear')
 
-
-
-def welcome_screen():
+def welcome_screen() -> None:
     logo = bills_logo
     message: str = '\033[3mWelcome to...\033[0m'
 
@@ -27,16 +15,26 @@ def welcome_screen():
     print(message)
     print(logo)
     # add a 0.5s delay after printing the logo
-    time.sleep(0.5)
+    time.sleep(2)
     
 
 
 # gets the users singn in info.
 def sign_in_user() -> tuple:
+    os.system('clear')
     user_name: str = ''
     user_id: int = 0
+    sign_in_message: str = 'Sign In'
+    output = ''
 
-    print(f'--------------- \033[3mSign In\033[0m ---------------\n')
+    for char in sign_in_message:
+        output += char
+        print('\n\n\n\n\n\n\n\n\n\n\n\n')
+        print(f'--------------- {output} ---------------\n')
+        time.sleep(0.3)
+        if len(output) < 7:    
+            os.system('clear')
+    
     user_name = input('Enter your user name: ')
     user_id = int(input('Enter your user id: '))
     new_user = User(user_name, user_id)# create new_user object with user_name and user_id
@@ -57,9 +55,9 @@ def select_option(user_name, user_id) -> int:
     
     menu_options = f"""
 --- {user_name}-{user_id} ---
-_____________________________
+_______________________________
 Select an option from the menu.
-_____________________________
+_______________________________
 {option_1}
 {option_2}
 {option_3}
@@ -78,7 +76,7 @@ _____________________________
 
 def current_bills_view(user: User) -> None:
     os.system('clear')
-    print(f'--- {user.name}-{user.user_id} current bills ---\n_________________________')
+    print(f'--- {user.name}-{user.user_id} current bills ---\n______________________________')
     list_of_bills: list[str] = user.list_all_bills()
     for bill in list_of_bills:
         print(f'- {bill}')
@@ -101,7 +99,7 @@ Example June 25th 2024 would be:
 2024,6,25
 Do not use leading zeros \nExample 06 should be entered as 6.
 '''
-    print(f'--- Creating New Bill ---\n_________________________')
+    print(f'--- Creating New Bill ---\n____________________________')
     name: str = input('\nWhat is the name of the bill?\n')
     amount: float = float( input(f'\nWhat is the amount due for your {name} bill?\n $') )
     
@@ -146,7 +144,7 @@ def remove_bill_view(user: User):
 
 def sign_out(user: User) -> None:
     os.system('clear')
-    print('Thank You For Using Bills....')
+    print('Thank You For Using Bills...')
     print(f'\n{user.name}-{user.user_id} signed-out!')
     print('_____________________________\n')
 
