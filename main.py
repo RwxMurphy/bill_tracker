@@ -18,6 +18,3 @@ while user_choice != 0:
 
 ui.sign_out(new_user)
 
-
-if __name__ == '__main__':
-    pass

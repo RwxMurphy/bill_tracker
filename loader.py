@@ -8,6 +8,7 @@ def loader(time_delay=0.05) -> None:
     progress:list[str] = ['#']
     
     for i in range(0, 31):
+      print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
       if i > 0:
          completed += 100//30
       progress.insert(1, '#')
